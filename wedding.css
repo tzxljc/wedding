@@ -102,6 +102,19 @@ body {
     opacity: 1;
 }
 
+.dingdong-row {
+    white-space: nowrap;
+    line-height: 1.5 !important;
+}
+
+.dingdong-row img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 25px;
+    margin: 0;
+}
+
 .art-font,
 .art-text,
 .split-slogan1,
@@ -558,6 +571,15 @@ body {
     padding: 40px 20px;
     box-sizing: border-box;
     border-radius: 15px;
+}
+
+.sticker-2 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+    object-fit: contain;
 }
 
 #ending {
