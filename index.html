@@ -315,16 +315,12 @@
                 "y_339A3095_1.jpg",
                 "y_339A3104_1.jpg",
                 "y_339A3240_1.jpg",
-                "y_339A3249_1.jpg",
                 "小方地图.png",
                 "烩地图.png",
-                "y_339A3259_1.jpg",
                 "y_339A3284_1.jpg",
                 "y_339A3313_1.jpg"
             ],
-            audio: [
-                "爱的就是你.MP3"
-            ]
+            audio: []
         };
 
         // ========== 2. 加载进度管理 ==========
@@ -339,14 +335,14 @@
         let loadTimeout = setTimeout(() => {
             console.log('加载超时，强制进入主页面');
             completeLoading();
-        }, 15000);
+        }, 8000);
 
         // 更新加载进度
         function updateProgress() {
             const progress = Math.floor((loadedCount / totalCount) * 100);
             loaderBar.style.width = `${progress}%`;
             loaderText.textContent = `正在加载甜蜜回忆... ${progress}%`;
-            if (loadedCount >= totalCount) {
+            if (loadedCount >= totalCount || progress >= 80) {
                 completeLoading();
             }
         }
@@ -374,9 +370,16 @@
         function preloadImages() {
             resources.images.forEach(src => {
                 const img = new Image();
-                img.src = src + '?t=' + new Date().getTime(); // 加时间戳防缓存
+                img.src = src; // 加时间戳防缓存
                 img.onload = () => { loadedCount++; updateProgress(); };
                 img.onerror = () => { console.warn(`图片加载失败: ${src}`); loadedCount++; updateProgress(); };
+                img.onloadstart = () => {
+                    if (!img.dataset.counted) {
+                        img.dataset.counted = true;
+                        loadedCount++;
+                        updateProgress();
+                    }
+                };
             });
         }
 
@@ -554,19 +557,9 @@
         }
 
         // ========== 6. 开始预加载（适配移动端） ==========
-        if (/Mobile|Android|iOS/i.test(navigator.userAgent)) {
-            // 移动端用load事件，加载更完整
-            window.addEventListener('load', () => {
-                preloadImages();
-                preloadAudio();
-            });
-        } else {
-            // PC端用DOMContentLoaded，加载更快
-            window.addEventListener('DOMContentLoaded', () => {
-                preloadImages();
-                preloadAudio();
-            });
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+            preloadImages();
+        });
     </script>
 </body>
 
