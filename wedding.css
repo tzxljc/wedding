@@ -170,6 +170,23 @@ body {
     margin-top: -10px;
     padding: 5px 0;
     width: 100%;
+
+    display: flex;
+    align-items: left;
+    /* 文字保持垂直居中 */
+    gap: 0;
+}
+
+.art-title img {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    object-fit: contain;
+    align-self: flex-start;
+    /* 图片垂直偏上对齐 */
+    margin-right: -30px;
+    /* 关键：图片向右偏移贴近文字（数值可调整） */
+    margin-top: -50px;
 }
 
 .music-btn {
@@ -638,6 +655,18 @@ body {
         aspect-ratio: 9/10;
     }
 
+    .art-title {
+        gap: 0;
+    }
+
+    .art-title img {
+        width: 130px;
+        height: 130px;
+        margin-right: -25px;
+        /* 移动端调整偏移量 */
+        margin-top: -8px;
+    }
+
     .split-layout1,
     .split-layout2 {
         gap: 10px;
@@ -783,6 +812,18 @@ body {
         width: 100%;
     }
 
+    .art-title {
+        gap: 0;
+    }
+
+    .art-title img {
+        width: 120px;
+        height: 120px;
+        margin-right: -20px;
+        /* 小屏调整偏移量 */
+        margin-top: -6px;
+    }
+
     .split-layout1,
     .split-layout2 {
         gap: 5px;
@@ -908,6 +949,18 @@ body {
     .art-text-yes,
     .art-text-ido {
         font-size: 35px !important;
+    }
+
+    .art-title {
+        gap: 0;
+    }
+
+    .art-title img {
+        width: 110px;
+        height: 110px;
+        margin-right: -15px;
+        /* 超小屏调整偏移量 */
+        margin-top: -5px;
     }
 
     .couple-card img {
