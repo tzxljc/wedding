@@ -462,7 +462,7 @@ body {
 }
 
 .calendar-header .current-date {
-    font-size: 20px !important;
+    font-size: 35px !important;
     font-weight: 700;
 }
 
@@ -849,7 +849,7 @@ body {
     }
 
     .calendar-header .current-date {
-        font-size: 18px !important;
+        font-size: 32px !important;
     }
 
     .countdown-container {
@@ -1014,7 +1014,7 @@ body {
     }
 
     .calendar-header .current-date {
-        font-size: 16px !important;
+        font-size: 30px !important;
         /* 小屏手机适配 */
     }
 
@@ -1123,7 +1123,7 @@ body {
     }
 
     .calendar-header .current-date {
-        font-size: 14px !important;
+        font-size: 28px !important;
         /* 超小屏手机（比如iPhone SE）适配 */
     }
 
