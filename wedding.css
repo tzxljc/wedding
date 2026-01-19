@@ -441,7 +441,7 @@ body {
     font-family: sans-serif, "Microsoft Yahei", "汉仪甜心体";
     font-size: 14px !important;
     color: #7a1939 !important;
-    max-width: 400px;
+    max-width: 500px;
     margin: 20px auto;
     /*border: 1px solid #777;*/
     display: block;
@@ -457,7 +457,7 @@ body {
     margin-bottom: 12px;
     color: #7a1939 !important;
     font-weight: bold;
-    width: calc(7 * 35px);
+    width: calc(7 * 45px);
     margin: 0 auto 12px;
 }
 
@@ -469,7 +469,7 @@ body {
 /* 星期栏：网格布局（7列） */
 .weekdays {
     display: grid;
-    grid-template-columns: repeat(7, 35px);
+    grid-template-columns: repeat(7, 45px);
     justify-content: center;
     gap: 0px;
     text-align: center;
@@ -485,7 +485,7 @@ body {
 /* 日期栏：网格布局（7列） */
 .dates {
     display: grid;
-    grid-template-columns: repeat(7, 35px);
+    grid-template-columns: repeat(7, 45px);
     justify-content: center;
     row-gap: 1px;
     column-gap: 0px;
