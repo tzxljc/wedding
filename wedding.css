@@ -437,18 +437,21 @@ body {
 }
 
 /* 日历整体样式*/
+/* 日历整体样式（统一容器宽度，为列对齐打基础）*/
 .calendar {
     font-family: sans-serif, "Microsoft Yahei", "汉仪甜心体";
     font-size: 14px !important;
     color: #7a1939 !important;
+    width: 90%;
+    /* 占屏幕90%，自适应核心 */
     max-width: 500px;
+    /* 大屏兜底 */
     margin: 20px auto;
-    /*border: 1px solid #777;*/
     display: block;
     box-sizing: border-box;
 }
 
-/* 头部：日期+年份的排版 */
+/* 头部：日期+年份的排版（宽度和日历容器一致） */
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -457,8 +460,11 @@ body {
     margin-bottom: 12px;
     color: #7a1939 !important;
     font-weight: bold;
-    width: calc(7 * 45px);
+    width: 100%;
+    /* 和日历容器同宽 */
     margin: 0 auto 12px;
+    padding: 0 2px;
+    /* 对齐列的内边距 */
 }
 
 .calendar-header .current-date {
@@ -466,67 +472,85 @@ body {
     font-weight: 700;
 }
 
-/* 星期栏：网格布局（7列） */
+/* 星期栏：固定7列，和日期栏完全对齐 */
 .weekdays {
     display: grid;
-    grid-template-columns: repeat(7, 45px);
-    justify-content: center;
-    gap: 0px;
+    grid-template-columns: repeat(7, 1fr);
+    /* 7列等宽均分 */
+    grid-template-rows: 1fr;
+    /* 单行，保证高度一致 */
+    gap: 2px;
+    /* 列间距，和日期栏一致 */
     text-align: center;
     font-weight: bold;
     padding-bottom: 8px;
     border-bottom: 2px solid #7a1939 !important;
     margin-bottom: 8px;
     color: #7a1939 !important;
-    width: fit-content;
+    width: 100%;
+    /* 必须100%，和日期栏同宽 */
     margin: 0 auto 8px;
+    box-sizing: border-box;
 }
 
-/* 日期栏：网格布局（7列） */
+/* 日期栏：和星期栏列规则完全一致，保证对齐 */
 .dates {
     display: grid;
-    grid-template-columns: repeat(7, 45px);
-    justify-content: center;
-    row-gap: 1px;
-    column-gap: 0px;
+    grid-template-columns: repeat(7, 1fr);
+    /* 和星期栏一模一样的列规则 */
+    grid-template-rows: repeat(4, 1fr);
+    /* 固定行数，可选 */
+    gap: 2px;
+    /* 和星期栏列间距完全一致 */
     text-align: center;
     color: #7a1939 !important;
-    width: fit-content;
+    width: 100%;
+    /* 必须100%，和星期栏同宽 */
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
-/* 单个日期格子的基础样式 */
+/* 单个日期格子（统一内边距，避免列高不一致） */
 .date-item {
     padding: 5px 0;
     position: relative;
     width: 100%;
-    /* 占满列宽 */
+    display: flex;
+    /* 保证数字居中 */
+    align-items: center;
+    justify-content: center;
 }
 
 .heart-date {
     padding: 5px 0;
     position: relative;
     width: 100%;
+    display: flex;
+    /* 和普通日期格子对齐 */
+    align-items: center;
+    justify-content: center;
 }
 
+/* 爱心图标自适应+不影响对齐 */
 .heart-icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
+    width: 60%;
+    /* 相对格子宽度 */
+    height: auto;
+    max-width: 30px;
+    min-width: 20px;
     z-index: 1;
 }
 
 .heart-date .date-num {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: #7a1939 !important;
-    /* 字体加粗到900（最粗），默认bold是700 */
     font-weight: 900 !important;
     margin: 0;
-    z-index: 2;
 }
 
 .countdown-container {
